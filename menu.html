@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        text-align: center;
+        color: red;
+    }
+    img{
+        width: 10%;
+    } 
+     #parent{
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        margin-top: 10%;
+        margin-left: 10%;
+        grid-gap:20px;
+    }
+    
+</style>
+<body>
+    <h1>Menu</h1>
+    <div id=parent></div>
+</body>
+</html>
+
+<script>
+    var dish=[
+        {
+            name:"Idli",
+            price:"100",
+            des:"South Dish",
+            time:"20 min",
+            img:"https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe.jpg"
+
+        },
+        {
+            name:"Vada",
+            price:"150",
+            des:"South Dish",
+            time:"10 min",
+            img:"https://www.archanaskitchen.com/images/archanaskitchen/Indian_Breakfast_Tiffins/South_Indian_Medu_Vada_Sambar_with_Medu_Vada_Maker-8.jpg"
+        },
+        {
+            name:"Noodles",
+            price:"150",
+            des:"Snacks",
+            time:"10 min",
+            img:"https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe.jpg"
+        },
+        {
+            name:"Chicken Thali",
+            price:"500",
+            des:"Main Course",
+            time:"30 min",
+            img:"https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe.jpg"
+        },
+        {
+            name:"Veg Thali",
+            price:"300",
+            des:"Main Course",
+            time:"30 min",
+            img:"https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe.jpg"
+        },
+        {
+            name:"Paneer Thali",
+            price:"500",
+            des:"Main Course",
+            time:"30 min",
+            img:"https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe.jpg"
+        },
+        {
+            name:"Chicken Soup",
+            price:"200",
+            des:"Snacks",
+            time:"20 min",
+            img:"https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe.jpg"
+        },
+        {
+            name:"Veg Soup",
+            price:"100",
+            des:"Snacks",
+            time:"20 min",
+            img:"https://www.ticklingpalates.com/wp-content/uploads/2020/06/Soft-Spongy-Idli-Recipe.jpg"
+        }
+
+    ]
+    localStorage.setItem('item_list',JSON.stringify(dish))
+    var item_list=JSON.parse(localStorage.getItem('item_list'))
+   // console.log(item_list)
+    var parent=document.getElementById('parent')
+    for(var i=0;i<dish.length;i++)
+    {
+        var div=document.createElement('div')
+        var d_name=document.createElement('p')
+        d_name.innerHTML=`Name:${dish[i].name}`
+
+        var d_price=document.createElement('p')
+        d_price.innerHTML=`Price:${dish[i].price}`
+
+        var d_des=document.createElement('p')
+        d_des.innerHTML=`Description:${dish[i].des}`
+
+        var d_time=document.createElement('p')
+        d_time.innerHTML=`Price:${dish[i].time}`
+
+        var d_img=document.createElement('img')
+        d_img.src=dish[i].img
+         
+        var btn=document.createElement('button')
+        btn.innerHTML="Add to Cart"
+        btn.onclick=function(){
+            for(var j=0;j<item_list.length;i++){
+                if(dish[i]==item_list[j]){
+                    cart(item_list[j])
+                    return;
+                }
+            }
+            
+        }
+
+        div.append(d_img,d_name,d_price,d_des,d_time,btn)
+
+        parent.append(div)
+ }
+
+ function cart(d){
+     var cart_arr=localStorage.getItem('cart')
+     if(cart_arr==null){
+         cart_arr=[]
+     }
+     else{
+         cart_arr=JSON.parse(localStorage.getItem('cart'))
+     }
+     cart_arr.push(d)
+     console.log(cart_arr)
+     localStorage.setItem('cart',JSON.stringify(cart_arr))
+
+ }
+</script>

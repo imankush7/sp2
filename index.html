@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #nav_bar{
+        background-color: black;
+        overflow: hidden;
+        border-radius: 10%;
+        margin-top: 20%;
+    }
+    .nav_btn{
+        color:white;
+        background-color:black;
+        height: 100px;
+        width: 100px;
+        font-size: 20px;
+        margin-left: 220px;
+        margin-right: 20px;
+        border: hidden;
+        
+    }
+    .nav_btn:hover{
+        color: black;
+        background-color: white;
+    }
+    h1{
+        text-align: center;
+        margin-bottom: -100px;
+        margin-top: 50px;
+    }
+</style>
+<body>
+    <h1>Online Food Ordering</h1>
+    <div id="nav_bar">
+        <button class="nav_btn" onclick="menu()">Menu</button>
+        <button class="nav_btn" onclick="login()">Log in</button>
+        <button class="nav_btn" onclick="signup()">Sign Up</button>
+    </div>
+</body>
+</html>
+<script>
+    function menu(){
+        alert("Login First")
+    }
+    function login(){
+        window.location.href="C:/Users/kisla/OneDrive/Desktop/Ninjas2/unit_2/final_sprint/login.html"
+    }
+    function signup(){
+        window.location.href="C:/Users/kisla/OneDrive/Desktop/Ninjas2/unit_2/final_sprint/signup.html"
+    }
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     #form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 200px;
+        font-size: 25px;
+        margin-top: 20%;
+        margin-left: 40%;
+        align-items: center;
+    }
+    #form label{
+        color: blue;
+    }
+    #form input{
+        margin-bottom: 8%;
+    }
+    #form button{
+        width: 100px;
+        height: 50px;
+        font-size: 20px;
+        background-color: green;
+    }
+</style>
+<body>
+    <form id="form">
+        <label for="email">Email</label>
+        <input type="text" id="email">
+        <label for="pass" >Password</label>
+        <input type="password" id="pass">
+        <button onclick="signin(event)">Sign in</button>
+    </form>
+</body>
+</html>
+<script>
+    function signin(e){
+        e.preventDefault()
+        var form=document.getElementById("form")
+        var email=form.email.value;
+        var pass=form.pass.value;
+        var data=JSON.parse(localStorage.getItem('signup'))
+        //console.log(data)
+        for(var i=0;i<data.length;i++)
+        {
+            if(data[i].email==email&& data[i].pass==pass)
+            {
+                alert("Sucessfully Logged In")
+                window.location.href="C:/Users/kisla/OneDrive/Desktop/Ninjas2/unit_2/final_sprint/menu.html"
+                break;
+            }
+            else{
+                alert("Invalid Login Details")
+                return
+            }
+        }
+}
+</script>
